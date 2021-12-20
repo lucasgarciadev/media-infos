@@ -1,26 +1,80 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { ChangeEvent, Fragment, useState } from "react";
 
-function App() {
+import { BrowserRouter } from "react-router-dom";
+import Routes from './Routes';
+
+// import { usePeopleList } from './reducers/people';
+import { GlobalStyle } from "./styles/global";
+
+import Nav from "./components/Nav";
+import { Template } from "./components/MainComponents";
+
+
+const App = () => {
+
+  // const [list, dispatch] = usePeopleList();
+
+  // const [inputName, setInputName] = useState('');
+
+  // const handleInputValue = (e: ChangeEvent<HTMLInputElement>) => {
+  //   setInputName(e.target.value);
+  // }
+
+  // const handleAddButton = () => {
+  //   dispatch({
+  //     type: 'ADD',
+  //     payload: {
+  //       name: inputName
+  //     }
+  //   })
+  //   setInputName('');
+  // }
+
+  // const deletePerson = (id: string) => {
+  //   dispatch({
+  //     type: 'DEL',
+  //     payload: { id }
+  //   })
+  // }
+
+  // const handleOrderButton = () => {
+  //   dispatch({
+  //     type: 'ORDER'
+  //   })
+  // }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+      <Fragment >
+        <BrowserRouter>
+        
+          <Nav />
+
+          <Template>
+            <Routes/>
+          </Template>
+
+        </BrowserRouter>
+
+        <GlobalStyle />
+      </Fragment>
+    
+  )
 }
+
+{/* <button onClick={handleOrderButton} >Ordenar</button>
+
+<h1>List of People</h1>
+
+<input type="text" value={inputName} onChange={handleInputValue} />
+<button onClick={handleAddButton}>Adicionar</button>
+
+<ul>
+  {list.map((item, index) =>
+    <li key={index} >
+      {item.name}
+      <button onClick={() => deletePerson(item.id)} >Deletar</button>
+    </li>
+  )}
+</ul> */}
 
 export default App;
